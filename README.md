@@ -8,3 +8,11 @@ Comments in posts come from french and english sample text files.  (they do not 
 Querying the graph results in rich results:
 ![image](https://user-images.githubusercontent.com/48262631/128918126-4bd0b251-e317-48a9-b018-fb60e7d72004.png)
 
+And the data can hold some useful surprises:
+
+GRAPH.QUERY "recommendations" "CALL db.idx.fulltext.queryNodes('Post', 'erotica') YIELD node as badPost MATCH (b)--(i)--(p:Post)-[:POSTED_BY]->(m:Member) WHERE p.id = badPost.id RETURN b,i,p, m"
+
+
+![image](https://user-images.githubusercontent.com/48262631/128919784-7bb92370-cc7c-4224-914d-159a07aca4fe.png)
+
+
